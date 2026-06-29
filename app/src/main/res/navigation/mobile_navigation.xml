@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_health_care"
+        android:name="com.explore.eldercare.ui.healthcare.HealthCareFragment"
+        android:label="Health Care"
+        tools:layout="@layout/fragment_health_care"/>
+
+    <fragment
+        android:id="@+id/navigation_donation"
+        android:name="com.explore.eldercare.ui.donation.DonationFragment"
+        android:label="Donation"
+        tools:layout="@layout/fragment_donation"/>
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.explore.eldercare.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_contacts"
+        android:name="com.explore.eldercare.ui.contacts.ContactsFragment"
+        android:label="Contacts"
+        tools:layout="@layout/fragment_contacts">
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.explore.eldercare.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_medicine"
+        android:name="com.explore.eldercare.ui.medicine.MedicineFragment"
+        android:label="Medicine"
+        tools:layout="@layout/fragment_medicine2"/>
+
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="com.explore.eldercare.ui.chatting.chatFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_chat"/>
+
+</navigation>

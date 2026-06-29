@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "86366590696",
+    "project_id": "eldercare-791db",
+    "storage_bucket": "eldercare-791db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:86366590696:android:38acfb5a7601510ae79b5d",
+        "android_client_info": {
+          "package_name": "com.explore.eldercare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0L0G2S79dQM8Q_3aCZ2trWBUrNdp6gto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

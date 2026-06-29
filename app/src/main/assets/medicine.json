@@ -1,0 +1,107 @@
+[
+  {
+    "name" : "Vicks Vaporub 5 ml",
+    "price" : "₹22.80",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/112125/vicks_vaporub_5_ml_0.jpg",
+    "treatment" : "Health Conditions Cold And Fever"
+
+  },
+  {
+    "name" : "Ensure Peptide Powder - Vanilla Flavour 400 gm (Pet Jar)",
+    "price" : "₹1743.25",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/958654/ensure_peptide_powder_vanilla_flavour_400_gm_pet_jar_206234_0_1.jpg",
+    "treatment" : "Fitness Family Nutrition"
+
+  },
+  {
+    "name" : "Volini Spray 100gm",
+    "price" : "₹289.00",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/388215/volini_spray_100gm_46243_0_2.jpg",
+    "treatment" : "Treatments Pain Relief Application"
+
+  },
+  {
+    "name" : "Capnea Injection 1ml",
+    "price" : "MRP ₹308.88",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/349693/capnea_injection_1ml_0.jpg",
+    "treatment" : "ADHD Rx required"
+
+  },
+  {
+    "name" : "DOLO SUSP Suspension 60ml",
+    "price" : "MRP ₹51.00",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/1057638/dolo_susp_suspension_60ml_457201_0_0.jpg",
+    "treatment" : "Fever"
+
+  },
+  {
+    "name" : "108 FORTE Tablet 15's",
+    "price" : "₹33.60",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/1073485/108_forte_tablet_15s_586659_0_0.jpg",
+    "treatment" : "Fever"
+
+  },
+  {
+    "name" : "Gatikind Eye Drops 5ml",
+    "price" : "₹79.86",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/323511/gatikind_eye_drops_5ml_39681_0_1.jpg",
+    "treatment" : "Eye Infections Rx required"
+
+  },
+  {
+    "name" : "ACUPAT Ophthalmic Solution 5ml",
+    "price" : "₹239.63",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/909388/acupat_ophthalmic_solution_5ml_0_0.jpg",
+    "treatment" : "Eye Infections Rx required"
+
+  },
+  {
+    "name" : "ADVAGRAF 3mg Capsule 10's",
+    "price" : "₹2700.00",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/905086/advagraf_3mg_capsule_10s_388823_0_1.jpg",
+    "treatment" : "Auto Immune Disease Rx required"
+
+  },
+  {
+    "name" : "Amflor Tooth Paste 70gm",
+    "price" : "₹246.00",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/857081/amflor_tooth_paste_70gm_0_0.jpg",
+    "treatment" : "Oral Care - P"
+
+  },
+  {
+    "name" : "Fosbait 500mg Tablet 30'S",
+    "price" : "₹935.15",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/387906/fosbait_500mg_tablet_30_s_0.jpg",
+    "treatment" : "Kidney Disease/Stones Rx required"
+
+  },
+  {
+    "name" : "Potrate 10mg Tablet 10'S",
+    "price" : "₹82.50",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/4352/potrate_10mg_tablet_10s_0_0.jpg",
+    "treatment" : "Kidney Disease/Stones Rx required"
+
+  },
+  {
+    "name" : "K Mac B6 Active Sugar Free Oral Solution 200ml",
+    "price" : "₹219.00",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/412897/k_mac_b6_active_sugar_free_oral_solution_200ml_54470_0_1.jpg",
+    "treatment" : "Kidney Disease/Stones"
+
+  },
+  {
+    "name" : "AF 150mg Tablet 1'S",
+    "price" : "₹12.80",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/390689/af_150mg_tablet_1s_0_1.jpg",
+    "treatment" : "AF 150mg Tablet 1'S"
+
+  },
+  {
+    "name" : "ARNEY 200 Tablet 7's",
+    "price" : "₹279.30",
+    "image" : "https://www.netmeds.com/images/product-v1/600x600/1114705/arney_200_tablet_7s_663641_0_0.jpg",
+    "treatment" : "Heart Failure Rx required"
+
+  }
+]
