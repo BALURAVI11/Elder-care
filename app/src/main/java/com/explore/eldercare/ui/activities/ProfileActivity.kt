@@ -32,6 +32,7 @@ class ProfileActivity : AppCompatActivity() {
                     binding.name.setText(data!!.name.toString())
                     binding.age.setText(data!!.age.toString())
                     binding.gender.setText(data!!.gender.toString())
+                    binding.age_gender_subtitle.text = "Age: ${data.age}  •  ${data.gender}"
                     binding.height.setText(data!!.height.toString())
                     binding.weight.setText(data!!.weight.toString())
                     binding.experience.setText(data!!.experience.toString())

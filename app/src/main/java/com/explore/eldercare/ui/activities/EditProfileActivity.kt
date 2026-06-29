@@ -20,7 +20,7 @@ import com.google.firebase.storage.FirebaseStorage
 class EditProfileActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditProfileBinding
-    private lateinit var uri : Uri
+    private var uri : Uri? = null
     private var flag = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,10 +56,11 @@ class EditProfileActivity : AppCompatActivity() {
                 }
 
                 binding.ivEdit.setOnClickListener {
-                    Intent(Intent.ACTION_GET_CONTENT).also {intent->
-                        intent.type = "image/*"
-                        launcher.launch(intent)
-                    }
+                    showAvatarSelectorDialog(data)
+                }
+
+                binding.etEditPfp.setOnClickListener {
+                    showAvatarSelectorDialog(data)
                 }
 
                 binding.btnEditUpdate.setOnClickListener {
@@ -76,11 +77,11 @@ class EditProfileActivity : AppCompatActivity() {
                         address = binding.etEditAddress.text.toString(),
                         image = data.image
                     )
-                    if(flag){
+                    if(flag && uri != null){
                         val storageRef = FirebaseStorage.getInstance().getReference("profile")
                             .child(FirebaseAuth.getInstance().currentUser!!.uid).child("profile.jpg")
 
-                        storageRef.putFile(uri)
+                        storageRef.putFile(uri!!)
                             .addOnSuccessListener {
                                 storageRef.downloadUrl.addOnSuccessListener {link->
                                     newInfo = newInfo.copy(image = link.toString())
@@ -116,6 +117,40 @@ class EditProfileActivity : AppCompatActivity() {
                 }
             }
 
+    }
+
+    private fun showAvatarSelectorDialog(data: Users) {
+        val dialog = android.app.Dialog(this)
+        dialog.setContentView(R.layout.dialog_avatar_selector)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val avatarBlue = dialog.findViewById<com.google.android.material.imageview.ShapeableImageView>(R.id.avatar_blue_btn)
+        val avatarOrange = dialog.findViewById<com.google.android.material.imageview.ShapeableImageView>(R.id.avatar_orange_btn)
+        val avatarTeal = dialog.findViewById<com.google.android.material.imageview.ShapeableImageView>(R.id.avatar_teal_btn)
+        val avatarPurple = dialog.findViewById<com.google.android.material.imageview.ShapeableImageView>(R.id.avatar_purple_btn)
+        val btnGallery = dialog.findViewById<com.google.android.material.button.MaterialButton>(R.id.btn_select_gallery)
+
+        val onAvatarSelected = { resId: Int ->
+            uri = Uri.parse("android.resource://${packageName}/$resId")
+            flag = true
+            Glide.with(this).load(uri).into(binding.etEditPfp)
+            dialog.dismiss()
+        }
+
+        avatarBlue.setOnClickListener { onAvatarSelected(R.drawable.avatar_blue) }
+        avatarOrange.setOnClickListener { onAvatarSelected(R.drawable.avatar_orange) }
+        avatarTeal.setOnClickListener { onAvatarSelected(R.drawable.avatar_teal) }
+        avatarPurple.setOnClickListener { onAvatarSelected(R.drawable.avatar_purple) }
+
+        btnGallery.setOnClickListener {
+            dialog.dismiss()
+            Intent(Intent.ACTION_GET_CONTENT).also { intent->
+                intent.type = "image/*"
+                launcher.launch(intent)
+            }
+        }
+
+        dialog.show()
     }
 
     private val launcher =

@@ -1,220 +1,428 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="32dp"
-    android:paddingBottom="40dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F5F7FB"
     tools:context=".ui.activities.EditProfileActivity">
 
-    <LinearLayout
+    <!-- Top Banner Background -->
+    <View
+        android:id="@+id/banner_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="160dp"
+        android:background="@drawable/profile_banner_gradient"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Scrollable Edit Container -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_marginTop="32dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp">
 
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/et_edit_pfp"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                app:shapeAppearanceOverlay="@style/CornerCut"
-                android:scaleType="fitXY"
+            <!-- Profile Picture Edit Area -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/pfp_edit_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="90dp"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:layout_constraintEnd_toEndOf="parent">
 
-            <ImageView
-                android:id="@+id/iv_edit"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/edit"
-                app:layout_constraintTop_toTopOf="@id/et_edit_pfp"
-                app:layout_constraintBottom_toBottomOf="@id/et_edit_pfp"
-                app:layout_constraintEnd_toEndOf="@+id/et_edit_pfp"
-                app:layout_constraintHorizontal_bias="0.9"
-                app:layout_constraintStart_toStartOf="@+id/et_edit_pfp"
-                app:layout_constraintVertical_bias="0.9" />
+                <!-- Profile Photo Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/pfp_card"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    app:cardCornerRadius="70dp"
+                    app:cardElevation="6dp"
+                    app:strokeWidth="4dp"
+                    app:strokeColor="@color/white"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/et_edit_pfp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        app:shapeAppearanceOverlay="@style/CornerCut"
+                        tools:srcCompat="@tools:sample/avatars" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Edit Overlay Circle Button -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/edit_btn_card"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="8dp"
+                    app:cardBackgroundColor="#1762B8"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/pfp_card"
+                    app:layout_constraintEnd_toEndOf="@id/pfp_card"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="4dp">
+
+                    <ImageView
+                        android:id="@+id/iv_edit"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/baseline_edit_24"
+                        app:tint="@color/white" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Personal Info Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_personal_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/white"
+                app:strokeWidth="0dp"
+                app:layout_constraintTop_toBottomOf="@id/pfp_edit_container">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Personal Information"
+                        android:textColor="#1762B8"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Name Field -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="Full Name"
+                        app:boxStrokeColor="#1762B8"
+                        app:hintTextColor="#1762B8"
+                        app:startIconDrawable="@drawable/baseline_contacts_24"
+                        app:startIconTint="#7A8B9E">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_edit_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:textColor="#2D3748"
+                            android:lines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Email Field -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="Email Address"
+                        app:boxStrokeColor="#1762B8"
+                        app:hintTextColor="#1762B8"
+                        app:startIconDrawable="@drawable/baseline_contacts_24"
+                        app:startIconTint="#7A8B9E">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_edit_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"
+                            android:textColor="#2D3748"
+                            android:lines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Age & Gender Fields (Horizontal Grid) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp"
+                        android:weightSum="2">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="6dp"
+                            android:hint="Age"
+                            app:boxStrokeColor="#1762B8"
+                            app:hintTextColor="#1762B8">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_edit_age"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:textColor="#2D3748"
+                                android:lines="1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:hint="Gender"
+                            app:boxStrokeColor="#1762B8"
+                            app:hintTextColor="#1762B8">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_edit_gender"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textColor="#2D3748"
+                                android:lines="1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <!-- Address Field -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Home Address"
+                        app:boxStrokeColor="#1762B8"
+                        app:hintTextColor="#1762B8"
+                        app:startIconDrawable="@drawable/baseline_home_24"
+                        app:startIconTint="#7A8B9E">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_edit_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPostalAddress"
+                            android:textColor="#2D3748"
+                            android:lines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Health Metrics Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_health"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/white"
+                app:strokeWidth="0dp"
+                app:layout_constraintTop_toBottomOf="@id/card_personal_info">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Health Metrics"
+                        android:textColor="#1762B8"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Weight, Height, Blood Group -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="4dp"
+                            android:hint="Weight"
+                            app:boxStrokeColor="#1762B8"
+                            app:hintTextColor="#1762B8">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_edit_weight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textColor="#2D3748"
+                                android:lines="1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginHorizontal="2dp"
+                            android:hint="Height"
+                            app:boxStrokeColor="#1762B8"
+                            app:hintTextColor="#1762B8">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_edit_height"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textColor="#2D3748"
+                                android:lines="1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="4dp"
+                            android:hint="Blood"
+                            app:boxStrokeColor="#1762B8"
+                            app:hintTextColor="#1762B8">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_edit_Bloodgroup"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textColor="#2D3748"
+                                android:lines="1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Ailments & Additional Info Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_medical_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/white"
+                app:strokeWidth="0dp"
+                app:layout_constraintTop_toBottomOf="@id/card_health">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medical History"
+                        android:textColor="#1762B8"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Previous Ailments Field -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="Previous Ailments"
+                        app:boxStrokeColor="#1762B8"
+                        app:hintTextColor="#1762B8"
+                        app:startIconDrawable="@drawable/baseline_health_and_safety_24"
+                        app:startIconTint="#7A8B9E">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_edit_prev"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textColor="#2D3748"
+                            android:lines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Experience/Notes Field -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Care Experience / Additional Notes"
+                        app:boxStrokeColor="#1762B8"
+                        app:hintTextColor="#1762B8"
+                        app:startIconDrawable="@drawable/baseline_assist_walker_24"
+                        app:startIconTint="#7A8B9E">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_edit_experience"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textColor="#2D3748"
+                            android:lines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Save Changes Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_edit_update"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:text="Save Changes"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="12dp"
+                android:backgroundTint="#1762B8"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/card_medical_details"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:hint="Name">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_name"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:hint="Age">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_age"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:hint="Email">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_email"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:hint="Address">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_address"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:hint="Gender">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_gender"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:hint="Weight">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_weight"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:hint="Height">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_height"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:hint="Blood Group">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_Bloodgroup"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:hint="Previous Ailments">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_prev"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:hint="Previous Ailments">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_experience"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:id="@+id/btn_edit_update"
-            android:layout_width="wrap_content"
-            android:paddingHorizontal="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content"
-            android:text="Update" />
-
-    </LinearLayout>
-
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
